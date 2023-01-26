@@ -1,0 +1,32 @@
+<h1 class="text-center titolone">Caccia al tesoro</h1>
+
+<form
+  [formGroup]="form"
+  autocomplete="off"
+  class="p-3 form-group needs-validation"
+>
+  <div *ngFor="let item of questions; let i = index" class="container pb-5">
+    <div class="p-2">
+      <h2 class="text-center">Domanda {{ i + 1 }}</h2>
+      <p class="text-center question">{{ item.question }}</p>
+    </div>
+
+    <input
+      [id]="item.id"
+      type="text"
+      class="form-control border-big"
+      [ngClass]="{ 'show-color readonly': verified }"
+      [readonly]="verified"
+      [formControlName]="item.id"
+    />
+  </div>
+
+  <div class="form pt-5">
+    <p-button
+      (click)="submit()"
+      label="Verifica"
+      icon="pi pi-check"
+      styleClass="p-button-lg p-button-success"
+    ></p-button>
+  </div>
+</form>
