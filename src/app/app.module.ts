@@ -7,9 +7,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { FormValidComponent } from './formValid/formValid.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FormValidComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

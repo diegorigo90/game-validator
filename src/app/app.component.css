@@ -1,34 +1,10 @@
 .container {
+  padding: 6%;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-
 .titolone {
   font-size: 300%;
   padding-top: 10%;
-}
-
-.form {
-  display: flex;
-  justify-content: center;
-}
-
-.ng-touched.ng-valid.show-color {
-  border-color: green;
-  border-width: 2px;
-}
-.ng-touched.ng-invalid.show-color {
-  border-color: red;
-  border-width: 2px;
-}
-
-.border-big {
-  border-color: black;
-  font-size: xx-large;
-  border-width: 2px;
-}
-
-.question{
-    font-size: larger;
 }
