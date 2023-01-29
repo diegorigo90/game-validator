@@ -1,30 +1,30 @@
-<form
-  [formGroup]="form"
-  autocomplete="off"
-  class="form-group needs-validation"
->
-  <div *ngFor="let item of questions; let i = index" class="container pb-5">
-    <div class="p-2">
-      <h2 class="text-center">Domanda {{ i + 1 }}</h2>
-      <p class="text-center question">{{ item.question }}</p>
-    </div>
+<div class="all-center">
+  <my-title text="Caccia al tesoro" class="pb-5"></my-title>
+  <div class="container">
+    <form [formGroup]="form" autocomplete="off" class="form-group">
+      <div class="p-2">
+        <h2 class="text-center">Nome squadra</h2>
+      </div>
+      <input
+        id="teamName"
+        type="text"
+        class="form-control border-black"
+        formControlName="teamName"
+        (keyup.enter)="check()"
+      />
 
-    <input
-      [id]="item.id"
-      type="text"
-      class="form-control border-big"
-      [ngClass]="{ 'show-color readonly': verified }"
-      [readonly]="verified"
-      [formControlName]="item.id"
-    />
+      <div class="code">
+        <div class="p-2 pt-5">
+          <h2 class="text-center">Codice foglio</h2>
+        </div>
+        <input
+          id="code"
+          type="text"
+          class="form-control border-black"
+          formControlName="code"
+          (keyup.enter)="check()"
+        />
+      </div>
+    </form>
   </div>
-
-  <div class="form pt-5">
-    <p-button
-      (click)="submit()"
-      label="Verifica"
-      icon="pi pi-check"
-      styleClass="p-button-lg p-button-success"
-    ></p-button>
-  </div>
-</form>
+</div>

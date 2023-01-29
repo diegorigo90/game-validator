@@ -1,28 +1,19 @@
-
-
-
-.form {
-  display: flex;
-  justify-content: center;
+.container{
+    max-width: 500px;
 }
 
-.ng-touched.ng-valid.show-color {
-  border-color: green;
-  background-color: rgba(0, 128, 0, 0.329);
-  border-width: 2px;
-}
-.ng-touched.ng-invalid.show-color {
-  border-color: red;
-  background-color: rgba(255, 0, 0, 0.411);
-  border-width: 2px;
-}
-
-.border-big {
-  border-color: black;
-  font-size: xx-large;
-  border-width: 2px;
+.border-black{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    height: 80px;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: bold;
+    text-transform: uppercase
 }
 
-.question {
-  font-size: larger;
+.code{
+    max-width: 300px;
+    margin: auto;
 }

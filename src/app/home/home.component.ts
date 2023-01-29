@@ -1,34 +1,40 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { questions } from '../questions.model';
+import { AppService } from '../app.service';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  value2 = '';
-  questions = questions;
-  form = new FormGroup({});
-  verified = false;
+  form: FormGroup;
 
-  constructor(private router: Router) {
-    questions.forEach((item) =>
-      this.form.addControl(
-        String(item.id),
-        new FormControl('', [
-          Validators.required,
-          Validators.pattern(item.anwswer),
-        ])
-      )
-    );
+  constructor(
+    private fb: FormBuilder,
+    private appService: AppService,
+    private router: Router
+  ) {
+    this.form = this.fb.group({
+      teamName: '',
+      code: '',
+    });
   }
 
-  submit() {
-    this.verified = true;
-    if (this.form.valid) {
-      this.router.navigateByUrl('/formValid');
+  check() {
+    let teamName = String(this.form.get('teamName')?.value);
+    let code = String(this.form.get('code')?.value);
+    if (this.appService.checkTeam(teamName)) {
+      if (this.appService.checkCode(teamName, code)) {
+        let teamCode = this.appService.getTeamCode(teamName);
+        let url = `/validation/${teamCode}/${code}`;
+        console.log(`Navigating to ${url}`);
+        this.router.navigateByUrl(url);
+      } else {
+        alert('Il codice non è corretto!!!');
+      }
+    } else {
+      alert('La squadra non esiste!!!');
     }
   }
 }
