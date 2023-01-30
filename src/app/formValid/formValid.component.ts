@@ -7,7 +7,7 @@ import { AppService } from '../app.service';
   styleUrls: ['./formValid.component.css'],
 })
 export class FormValidComponent {
-  code: ''
+  code: '';
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -17,11 +17,11 @@ export class FormValidComponent {
     let validationCode = this.activatedRoute.snapshot.params['validationCode'];
     let isCorrect = this.appService.checkValidationCode(validationCode);
     if (!isCorrect) {
-      this.router.navigateByUrl('');
+      this.home();
     }
+  }
 
-    setTimeout(() => {
-      this.router.navigateByUrl('');
-    }, 15000);
+  home() {
+    this.router.navigateByUrl('');
   }
 }

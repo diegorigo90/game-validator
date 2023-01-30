@@ -16,17 +16,16 @@ export class HomeComponent {
     private router: Router
   ) {
     this.form = this.fb.group({
-      teamName: '',
+      teamCode: '',
       code: '',
     });
   }
 
   check() {
-    let teamName = String(this.form.get('teamName')?.value);
+    let teamCode = String(this.form.get('teamCode')?.value);
     let code = String(this.form.get('code')?.value);
-    if (this.appService.checkTeam(teamName)) {
-      if (this.appService.checkCode(teamName, code)) {
-        let teamCode = this.appService.getTeamCode(teamName);
+    if (this.appService.checkTeam(teamCode)) {
+      if (this.appService.checkCode(teamCode, code)) {
         let url = `/validation/${teamCode}/${code}`;
         console.log(`Navigating to ${url}`);
         this.router.navigateByUrl(url);

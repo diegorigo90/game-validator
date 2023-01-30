@@ -1,19 +1,16 @@
-
 .titolone {
-    font-size: 300%;
-  }
-  
-  .title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-  
-  .draghetto{
-    margin-left: 40px;
-    margin-right: 40px;
-    width: 60px;
-    height: fit-content;
-  }
-  
+  font-size: 250%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.draghetto {
+  width: 120px;
+  margin-bottom:20px;
+  height: fit-content;
+}

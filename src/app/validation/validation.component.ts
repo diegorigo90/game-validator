@@ -16,10 +16,11 @@ import { AppService } from '../app.service';
   styleUrls: ['./validation.component.css'],
 })
 export class ValidationComponent {
-  questions = QUESTIONS;
+  questions: any[] | undefined = [];
   form = new FormGroup({});
   verified = false;
   teamName = '';
+  teamCode = '';
   code = '';
 
   constructor(
@@ -28,24 +29,28 @@ export class ValidationComponent {
     private appService: AppService
   ) {
     this.code = this.activatedRoute.snapshot.params['code'];
-    let teamCode = this.activatedRoute.snapshot.params['team'];
-    this.teamName = this.appService.getTeamName(teamCode);
+    this.teamCode = this.activatedRoute.snapshot.params['teamCode'];
+    console.log('TEAM CODE', this.teamCode);
+    this.teamName = this.appService.getTeamName(this.teamCode);
+    console.log('TEAM NAME', this.teamName);
     if (!this.isAllRight()) {
       this.router.navigateByUrl('');
     }
-    if (this.teamName)
-      QUESTIONS.forEach((item) =>
+    if (this.teamName) {
+      this.questions = QUESTIONS.get(this.code);
+      this.questions?.forEach((item) =>
         this.form.addControl(
           String(item.id),
           new FormControl('', [Validators.required, myValidator(item.anwswer)])
         )
       );
+    }
   }
 
   isAllRight(): boolean {
     return (
-      this.appService.checkTeam(this.teamName) &&
-      this.appService.checkCode(this.teamName, this.code)
+      this.appService.checkTeam(this.teamCode) &&
+      this.appService.checkCode(this.teamCode, this.code)
     );
   }
 

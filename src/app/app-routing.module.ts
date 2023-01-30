@@ -15,7 +15,7 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'validation/:team/:code',
+    path: 'validation/:teamCode/:code',
     component: ValidationComponent,
   },
   {
