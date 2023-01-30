@@ -54,7 +54,7 @@ export class ValidationComponent {
     this.form.markAllAsTouched();
     if (this.form.valid) {
       let validationCode = this.appService.getValidationCode(this.code);
-      this.router.navigateByUrl(`/formValid/${validationCode}`);
+      this.router.navigateByUrl(`/formValid/${this.code}/${validationCode}`);
     }
   }
 }

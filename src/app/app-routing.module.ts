@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ValidationComponent,
   },
   {
-    path: 'formValid/:validationCode',
+    path: 'formValid/:code/:validationCode',
     component: FormValidComponent,
   },
 ];
